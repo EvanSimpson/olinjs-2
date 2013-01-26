@@ -5,11 +5,9 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , User = require('./models/user')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path')
-  , mongoose = require('mongoose');
+  , path = require('path');
 
 var app = express();
 
@@ -31,16 +29,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-// this should really be a post, but we'll cover that later
-// once we get to AJAX
-app.get('/users/new', user.create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
-
-
-
-
-
-
